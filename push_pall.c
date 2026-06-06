@@ -4,19 +4,20 @@
  * push - pushes an element to the stack
  * @stack: double pointer to the head of the stack
  * @line_number: line number in the file
+ * @arg: the argument (integer as string)
  */
-void push(stack_t **stack, unsigned int line_number)
+void push(stack_t **stack, unsigned int line_number, char *arg)
 {
 	stack_t *new_node;
 	int value;
 
-	if (global.arg == NULL || !is_integer(global.arg))
+	if (arg == NULL || !is_integer(arg))
 {
 	fprintf(stderr, "L%u: usage: push integer\n", line_number);
 	exit(EXIT_FAILURE);
 }
 
-	value = atoi(global.arg);
+	value = atoi(arg);
 
 	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)
@@ -24,6 +25,7 @@ void push(stack_t **stack, unsigned int line_number)
 	fprintf(stderr, "Error: malloc failed\n");
 	exit(EXIT_FAILURE);
 }
+
 	new_node->n = value;
 	new_node->prev = NULL;
 	new_node->next = *stack;
@@ -35,7 +37,7 @@ void push(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * pall - prints all the values on the stack
+ * pall - prints all the values on the stack, starting from the top
  * @stack: double pointer to the head of the stack
  * @line_number: line number in the file
  */
