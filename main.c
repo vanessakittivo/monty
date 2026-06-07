@@ -1,14 +1,7 @@
 #define _GNU_SOURCE
 #include "monty.h"
 
-/**
- * g_arg - global opcode argument
- */
 char *g_arg = NULL;
-
-/**
- * g_file - global opened file
- */
 FILE *g_file = NULL;
 
 /**
