@@ -58,5 +58,7 @@ void op_div(stack_t **stack, unsigned int line_number);
 void op_mul(stack_t **stack, unsigned int line_number);
 void execute(char *opcode, stack_t **stack, unsigned int line_number);
 int is_integer(char *str);
+stack_t *create_node(int n);
+void run_monty(FILE *file, stack_t **stack);
 
 #endif

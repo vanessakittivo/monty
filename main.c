@@ -11,15 +11,8 @@
 int main(int argc, char **argv)
 {
 	FILE *file;
-	char *line;
-	char *opcode;
-	size_t len;
-	unsigned int line_number;
 	stack_t *stack;
 
-	line = NULL;
-	len = 0;
-	line_number = 0;
 	stack = NULL;
 
 	if (argc != 2)
@@ -35,23 +28,9 @@ int main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 
-	while (getline(&line, &len, file) != -1)
-	{
-		line_number++;
-
-		opcode = strtok(line, " \t\n");
-
-		if (opcode == NULL)
-			continue;
-
-		g_arg = strtok(NULL, " \t\n");
-
-		execute(opcode, &stack, line_number);
-	}
-
-	free(line);
-	free_stack(stack);
+	run_monty(file, &stack);
 	fclose(file);
+	free_stack(stack);
 
 	return (EXIT_SUCCESS);
 }
