@@ -1,6 +1,8 @@
 #ifndef MONTY_H
 #define MONTY_H
 
+#define _GNU_SOURCE
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -54,5 +56,7 @@ void op_nop(stack_t **stack, unsigned int line_number);
 void op_sub(stack_t **stack, unsigned int line_number);
 void op_div(stack_t **stack, unsigned int line_number);
 void op_mul(stack_t **stack, unsigned int line_number);
+void execute(char *opcode, stack_t **stack, unsigned int line_number);
+int is_integer(char *str);
 
 #endif
