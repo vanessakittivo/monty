@@ -8,7 +8,7 @@
  */
 void execute(char *opcode, stack_t **stack, unsigned int line_number)
 {
-	int i = 0;
+	int i;
 	instruction_t instructions[] = {
 		{"push", op_push},
 		{"pall", op_pall},
@@ -17,10 +17,13 @@ void execute(char *opcode, stack_t **stack, unsigned int line_number)
 		{"swap", op_swap},
 		{"add", op_add},
 		{"nop", op_nop},
+		{"sub", op_sub},
 		{"div", op_div},
 		{"mul", op_mul},
 		{NULL, NULL}
 	};
+
+	i = 0;
 
 	while (instructions[i].opcode != NULL)
 	{
@@ -32,6 +35,7 @@ void execute(char *opcode, stack_t **stack, unsigned int line_number)
 		i++;
 	}
 
-	fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
+	fprintf(stderr, "L%u: unknown instruction %s\n",
+		line_number, opcode);
 	exit(EXIT_FAILURE);
 }
