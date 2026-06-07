@@ -1,9 +1,6 @@
 #define _GNU_SOURCE
 #include "monty.h"
 
-char *g_arg = NULL;
-FILE *g_file = NULL;
-
 /**
  * main - entry point for Monty interpreter
  * @argc: argument count
