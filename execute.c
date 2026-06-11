@@ -20,6 +20,12 @@ void execute(char *opcode, stack_t **stack, unsigned int line_number)
 		{"sub", op_sub},
 		{"div", op_div},
 		{"mul", op_mul},
+		{"pchar", op_pchar},
+		{"pstr", op_pstr},
+		{"rotl", op_rotl},
+		{"rotr", op_rotr},
+		{"stack", op_stack},
+		{"queue", op_queue},
 		{NULL, NULL}
 	};
 

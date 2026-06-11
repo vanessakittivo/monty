@@ -40,6 +40,7 @@ typedef struct instruction_s
 /* global state */
 extern FILE *g_file;
 extern char *g_arg;
+extern int g_mode;
 
 /* core */
 void run_opcode(stack_t **stack, char *opcode, unsigned int line_number);
@@ -60,5 +61,11 @@ void execute(char *opcode, stack_t **stack, unsigned int line_number);
 int is_integer(char *str);
 stack_t *create_node(int n);
 void run_monty(FILE *file, stack_t **stack);
+void op_pchar(stack_t **stack, unsigned int line_number);
+void op_pstr(stack_t **stack, unsigned int line_number);
+void op_rotl(stack_t **stack, unsigned int line_number);
+void op_rotr(stack_t **stack, unsigned int line_number);
+void op_stack(stack_t **stack, unsigned int line_number);
+void op_queue(stack_t **stack, unsigned int line_number);
 
 #endif

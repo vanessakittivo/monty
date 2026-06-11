@@ -32,6 +32,7 @@ stack_t *create_node(int n)
 void op_push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new_node;
+	stack_t *temp;
 
 	if (is_integer(g_arg) == 0)
 	{
@@ -40,14 +41,23 @@ void op_push(stack_t **stack, unsigned int line_number)
 	}
 
 	new_node = create_node(atoi(g_arg));
-	new_node->next = *stack;
 
-	if (*stack != NULL)
-		(*stack)->prev = new_node;
+	if (g_mode == 0 || *stack == NULL)
+	{
+		new_node->next = *stack;
+		if (*stack != NULL)
+			(*stack)->prev = new_node;
+		*stack = new_node;
+		return;
+	}
 
-	*stack = new_node;
+	temp = *stack;
+	while (temp->next != NULL)
+		temp = temp->next;
+
+	temp->next = new_node;
+	new_node->prev = temp;
 }
-
 /**
  * op_pall - prints all stack values
  * @stack: stack head

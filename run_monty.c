@@ -18,7 +18,7 @@ void run_monty(FILE *file, stack_t **stack)
 		line_number++;
 		opcode = strtok(line, " \t\n");
 
-		if (opcode == NULL)
+		if (opcode == NULL || opcode[0] == '#')
 			continue;
 
 		g_arg = strtok(NULL, " \t\n");
